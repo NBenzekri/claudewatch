@@ -97,7 +97,7 @@ export default function CostsPage() {
                   cx="50%"
                   cy="50%"
                   outerRadius={80}
-                  label={({ project }) => project}
+                  label={({ name }) => String(name ?? '')}
                 >
                   {usage.projectBreakdown.map((_: unknown, i: number) => (
                     <Cell key={i} fill={COLORS[i % COLORS.length]} />
