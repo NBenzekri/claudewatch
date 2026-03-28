@@ -6,6 +6,8 @@
   <img src="public/claudewatch-infographic.jpeg" alt="claudewatch - how it works" width="500" />
 </p>
 
+![claudewatch dashboard](public/dashboard.png)
+
 ## Features
 
 - **Live Overview** — Active sessions, total stats, recent activity feed, usage chart
