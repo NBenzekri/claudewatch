@@ -25,7 +25,7 @@ const navItems = [
 
 export default function Sidebar() {
   const pathname = usePathname();
-  const { theme, setTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [expanded, setExpanded] = useState(() => {
     if (typeof window !== 'undefined') {
@@ -41,7 +41,7 @@ export default function Sidebar() {
     document.body.classList.toggle('sidebar-expanded', expanded);
   }, [expanded]);
 
-  const toggleTheme = () => setTheme(theme === 'dark' ? 'light' : 'dark');
+  const toggleTheme = () => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
 
   return (
     <aside
@@ -106,13 +106,13 @@ export default function Sidebar() {
             expanded ? 'justify-start' : 'justify-center'
           )}
         >
-          {mounted && (theme === 'dark' ? (
+          {mounted && (resolvedTheme === 'dark' ? (
             <Sun className="h-[18px] w-[18px] flex-shrink-0" />
           ) : (
             <Moon className="h-[18px] w-[18px] flex-shrink-0" />
           ))}
           {expanded && (
-            <span className="text-[13px] font-medium">{mounted && (theme === 'dark' ? 'Light Mode' : 'Dark Mode')}</span>
+            <span className="text-[13px] font-medium">{mounted && (resolvedTheme === 'dark' ? 'Light Mode' : 'Dark Mode')}</span>
           )}
         </button>
 
