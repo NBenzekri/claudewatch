@@ -27,7 +27,7 @@ export default function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <TooltipProvider delayDuration={0}>
+    <TooltipProvider delay={0}>
       <aside className="fixed left-0 top-0 z-40 flex h-screen w-[56px] flex-col items-center border-r border-border bg-card py-4">
         <div className="mb-6 flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-primary-foreground font-bold text-sm">
           CC
@@ -38,19 +38,21 @@ export default function Sidebar() {
               (item.href !== '/' && pathname.startsWith(item.href));
             return (
               <Tooltip key={item.href}>
-                <TooltipTrigger asChild>
-                  <Link
-                    href={item.href}
-                    className={cn(
-                      'flex h-10 w-10 items-center justify-center rounded-lg transition-colors',
-                      isActive
-                        ? 'bg-primary/15 text-primary'
-                        : 'text-muted-foreground hover:bg-secondary hover:text-foreground'
-                    )}
-                  >
-                    <item.icon className="h-5 w-5" />
-                  </Link>
-                </TooltipTrigger>
+                <TooltipTrigger
+                  render={
+                    <Link
+                      href={item.href}
+                      className={cn(
+                        'flex h-10 w-10 items-center justify-center rounded-lg transition-colors',
+                        isActive
+                          ? 'bg-primary/15 text-primary'
+                          : 'text-muted-foreground hover:bg-secondary hover:text-foreground'
+                      )}
+                    >
+                      <item.icon className="h-5 w-5" />
+                    </Link>
+                  }
+                />
                 <TooltipContent side="right" sideOffset={8}>
                   {item.label}
                 </TooltipContent>
